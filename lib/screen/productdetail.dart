@@ -27,6 +27,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../model/product.dart';
+import '../widget/cartCounter.dart';
 import '../widget/common_widget.dart';
 import '../widget/soldoutdialoug.dart';
 import '../widget/star_rating.dart';
@@ -36,6 +37,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class ProductDetail extends StatefulWidget {
   int id;
@@ -92,6 +94,7 @@ class _ProductDetailState extends State<ProductDetail> {
   final controller = PageController(viewportFraction: 1, keepPage: true);
 
   final GlobalKey<State> _dialogKey = GlobalKey<State>();
+  late CartCounter cartCounter ;
   @override
   void initState() {
     super.initState();
@@ -114,6 +117,8 @@ class _ProductDetailState extends State<ProductDetail> {
 
   @override
   Widget build(BuildContext context) {
+    cartCounter = Provider.of<CartCounter>(context);
+    cartCounter.setCartCountity(int_CartCounters);
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
     final double itemHeight = (size.height - kToolbarHeight - 24) / 3;
@@ -2054,6 +2059,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       hideProgressBar();
                       if (value.statusCode == 1) {
                         if (flag == Flag_Plus) {
+                          cartCounter.addItemInCart();
                           showSnakeBar(context, "Item Added to Cart!");
                           setState(() {
                             int_CartCounters = int_CartCounters + 1;
@@ -2072,6 +2078,7 @@ class _ProductDetailState extends State<ProductDetail> {
                               setState(() {});
                             }
                           });
+                          cartCounter.removeItemFromCart();
                           showSnakeBar(context, "Item Removed from Cart!");
                         }
                       } else {

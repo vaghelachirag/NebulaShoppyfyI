@@ -23,6 +23,7 @@ import '../model/homescreen/itemhomecategory.dart';
 import '../model/product.dart';
 import '../network/service.dart';
 import '../uttils/constant.dart';
+import '../widget/cartCounter.dart';
 import '../widget/common_widget.dart';
 import '../widget/mainButton.dart';
 import '../widget/noInternet.dart';
@@ -31,6 +32,8 @@ import '../widget/trending_item.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:provider/provider.dart';
+
 
 class MyCartList extends StatefulWidget {
   String device_Id = "";
@@ -52,6 +55,7 @@ class _MyCartListState extends State<MyCartList> with WidgetsBindingObserver  {
 
   String str_UserIds = "";
 
+ late CartCounter cartCounter;
   @override
   void initState() {
     super.initState();
@@ -128,6 +132,7 @@ class _MyCartListState extends State<MyCartList> with WidgetsBindingObserver  {
 
   @override
   Widget build(BuildContext context) {
+    cartCounter = Provider.of<CartCounter>(context);
     ScreenUtil.init(context);
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
@@ -719,12 +724,14 @@ handlePaymentFailure(String errorMessage){
                 hideProgressBar();
                  if (value.statusCode == 1) {
                     if (flag == Flag_Plus) {
+                      cartCounter.addItemInCart();
                       showSnakeBar(context, "Item Added to Cart!");
                       setState(() {
                         // _listCartItem.clear();
                         getMyCartList();
                       });
                     } else {
+                      cartCounter.removeItemFromCart();
                       showSnakeBar(context, "Item Removed from Cart!");
                       setState(() {
                         //  _listCartItem.clear();

@@ -23,10 +23,11 @@ import 'package:shimmer/shimmer.dart';
 import '../model/product.dart';
 import '../uttils/sharedpref.dart';
 import '../uttils/skeletonloader.dart';
+import '../widget/cartCounter.dart';
 import '../widget/star_rating.dart';
 import '../widget/trending_item.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:provider/provider.dart';
 
 
 class Home extends StatefulWidget {
@@ -81,6 +82,8 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    var cartCounter = Provider.of<CartCounter>(context);
+    cartCounter.setCartCountity(int_CartCounters);
     var size = MediaQuery.of(context).size;
 
     ScreenUtil.init(context);
