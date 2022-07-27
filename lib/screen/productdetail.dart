@@ -289,16 +289,13 @@ class _ProductDetailState extends State<ProductDetail> {
                                   child: GestureDetector(
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color:
-                                                int_SelectedVariantId == index
-                                                    ? Colors.black
-                                                    : Colors.black12,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20))),
+                                         shape: BoxShape.circle,
+                                         color:  int_SelectedVariantId == index
+                                      ? Colors.black
+                                      : Colors.black12
+                                    ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(1),
+                                        padding: EdgeInsets.all(3),
                                         child: CircleAvatar(
                                           backgroundColor: Color(int.parse(
                                               _listProductVariantColor[index]
@@ -359,7 +356,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       itemBuilder: (context, index) {
                         return Container(
                             decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)),
+                                border: Border.all(color: Colors.black),),
                             child: FutureBuilder(
                               future: setSelectedHeighlitWeightId(
                                   _listProductVariantWeight),
@@ -396,7 +393,7 @@ class _ProductDetailState extends State<ProductDetail> {
     return Container(
         color: Theme.of(context).backgroundColor,
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height / 11,
+        height: MediaQuery.of(context).size.height / 12,
         child: Container(
             padding: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
@@ -411,22 +408,27 @@ class _ProductDetailState extends State<ProductDetail> {
                       onTap: () {
                         print("OnCart" + "Add ToCart");
                       },
-                      child: Container(
+                      child: 
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child:  Container(
                         child: Padding(
                           padding: EdgeInsets.all(0),
                           child: CircleAvatar(
                               backgroundColor: buttonColor,
-                              maxRadius: 25,
+                              maxRadius: 20,
                               child: Icon(
                                 CommunityMaterialIcons.heart,
                                 color: Colors.white,
                               )),
                         ),
                       ),
+                      )
+                     ,
                     )),
                 Align(
                     alignment: Alignment.centerRight,
-                    child: setRegularText("Add To Cart", 20, Colors.black)
+                    child: setRegularText("Add To Cart", 16, Colors.black)
                     // Text(
                     //   "Add To Cart",
                     //   style: TextStyle(fontSize: 20, color: Colors.black),
@@ -450,8 +452,8 @@ class _ProductDetailState extends State<ProductDetail> {
                         padding: EdgeInsets.all(0),
                         child: CircleAvatar(
                             backgroundColor: buttonColor,
-                            maxRadius: 25,
-                            child: setBoldText("-", 20, Colors.black)
+                            maxRadius: 20,
+                            child: setBoldText("-", 16, Colors.black)
                             // Text(
                             //   "-",
                             //   style: TextStyle(
@@ -465,7 +467,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 Align(
                     alignment: Alignment.center,
                     child: setBoldText(
-                        int_CartQuantity.toString(), 20, Colors.black)
+                        int_CartQuantity.toString(), 16, Colors.black)
                     // Text(
                     //   int_CartQuantity.toString(),
                     //   style: TextStyle(
@@ -475,7 +477,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     // ),
                     ),
                 Align(
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.centerRight,
                     child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -496,8 +498,8 @@ class _ProductDetailState extends State<ProductDetail> {
                             padding: EdgeInsets.all(0),
                             child: CircleAvatar(
                                 backgroundColor: buttonColor,
-                                maxRadius: 25,
-                                child: setBoldText("+", 20, Colors.black)
+                                maxRadius: 20,
+                                child: setBoldText("+", 16, Colors.black)
                                 // Text(
                                 //   "+",
                                 //   style: TextStyle(

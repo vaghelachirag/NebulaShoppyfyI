@@ -82,36 +82,25 @@ class _TestState extends State<Test> with RouteAware {
         title: Text('Read More'),
         centerTitle: true,
       ),
-      body:   GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 1,
-            crossAxisSpacing: 1,
-          ),
-          children: List.generate(
-            20,
-            (index) => Container(
-              color: Colors.white,
-              child: CategoryProductWidget(
-                      product: Product(
-                          id: 1,
-                          productid: 1,
-                          catid: 1,
-                          company: "Test",
-                          name: "Test",
-                          icon: "https://nebulacompanies.net/Content/Images/EComEBCImages/RootImage/2001210552257116-EBC3.jpg",
-                          rating: 5,
-                          remainingQuantity: 5,
-                          price: '\$' + "Test",
-                          mrp: '\$' + "Test", qunatity: 1),
-                      gradientColors: [Colors.white, Colors.white],
-                      onCartAddClick: () {},
-                      onCartRemovedClick: () {},
-                      onCountChanges: (int) {}, onBackPressClicked: () {  },
-                    ),
+      body:   Container(
+     height: 50,
+     width: 50,
+     decoration: const BoxDecoration(
+      color: Colors.black,     
+      shape: BoxShape.circle),
+      child: Padding(
+            //this padding will be you border size
+            padding: const EdgeInsets.all(3.0),
+            child: Container(
+                  decoration: const BoxDecoration(
+                  color: Colors.white, shape: BoxShape.circle),
+                        child: const CircleAvatar(
+                        backgroundColor: Colors.white,
+                        foregroundImage: NetworkImage("https://i.ibb.co/rkG8cCs/112921315-gettyimages-876284806.jpg"),
+                   ),
             ),
-          ),
-        )
+      ),
+),
     );
   }
 

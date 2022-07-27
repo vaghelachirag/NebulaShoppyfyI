@@ -253,7 +253,7 @@ Padding loadSkeletonLoadersGrid(
             GridView.builder(
               itemCount: 20,
              shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
+             physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext ctx, index) {
                 int timer = 2000;
                 return Shimmer.fromColors(
