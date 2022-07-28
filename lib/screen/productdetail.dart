@@ -536,7 +536,7 @@ class _ProductDetailState extends State<ProductDetail> {
             ),
             Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                child: setBoldText("NebulaCare Customised", 10, Colors.black))
+                child: setRegularText("Nebulacare Customised", 10, Colors.black))
           ],
         )
       ],
@@ -673,7 +673,7 @@ class _ProductDetailState extends State<ProductDetail> {
       children: [
         Text(
           _listBannerImage[0].name,
-          style: TextStyle(fontSize: 16, color: Colors.red),
+          style: TextStyle(fontSize: 14, color: Colors.red[100],fontStyle: FontStyle.normal),
         )
       ],
     );
@@ -726,8 +726,8 @@ class _ProductDetailState extends State<ProductDetail> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              setBoldText(
-                                  _listBannerImage[0].name, 20, Colors.red),
+                              setRegularText(
+                                  _listBannerImage[0].name, 16, Colors.red),
                               // Text(
                               //   _listBannerImage[0].name,
                               //   style: TextStyle(
@@ -741,10 +741,11 @@ class _ProductDetailState extends State<ProductDetail> {
                               // ),
                             ],
                           ),
+                          Padding(padding: EdgeInsets.fromLTRB(0, 5, 0, 0),child:
                           Align(
                             alignment: Alignment.topLeft,
                             child: setItalicText(
-                                str_ShortDescription, 12, Colors.grey),
+                                str_ShortDescription, 10, Colors.grey),
                             // Text(
                             //   str_ShortDescription,
                             //   style: TextStyle(
@@ -752,7 +753,7 @@ class _ProductDetailState extends State<ProductDetail> {
                             //       color: Colors.grey,
                             //       fontWeight: FontWeight.normal),
                             // ),
-                          )
+                          ))
                         ],
                       )),
                   Column(
@@ -1130,7 +1131,7 @@ class _ProductDetailState extends State<ProductDetail> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                setBoldText('\u{20B9}${str_saleprice}', 20, Colors.black)
+                setRegularText('\u{20B9}${str_saleprice}', 20, Colors.black)
                 // Text(
                 //   '\u{20B9}${str_saleprice}',
                 //   style: TextStyle(
@@ -1157,7 +1158,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 Padding(
                     padding: EdgeInsets.only(left: 1),
                     child: Text(
-                      str_Mrp,
+                      removeDecimalAmount(str_Mrp),
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 14,
@@ -1171,7 +1172,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    setBoldText("PV:", 12, Colors.black),
+                    setRegularText("PV:", 12, Colors.black),
                     // Text(
                     //   "PV:",
                     //   style: TextStyle(
@@ -1181,7 +1182,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     // ),
                     Padding(
                       padding: EdgeInsets.only(left: 5),
-                      child: setBoldText(str_PV, 12, Colors.red),
+                      child: setRegularText(removeDecimalAmount(str_PV), 12, Colors.red),
                       // Text(
                       //   str_PV,
                       //   style: TextStyle(
@@ -1192,7 +1193,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     ),
                     Padding(
                         padding: EdgeInsets.only(left: 5),
-                        child: setBoldText("BV:", 12, Colors.black)
+                        child: setRegularText("BV:", 12, Colors.black)
                         //  Text(
                         //   "BV:",
                         //   style: TextStyle(
@@ -1203,7 +1204,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         ),
                     Padding(
                         padding: EdgeInsets.only(left: 5),
-                        child: setBoldText(str_BV, 12, Colors.red)
+                        child: setRegularText(removeDecimalAmount(str_BV), 12, Colors.red)
                         // Text(
                         //   str_BV,
                         //   style: TextStyle(
@@ -1214,7 +1215,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         ),
                     Padding(
                         padding: EdgeInsets.only(left: 5),
-                        child: setBoldText("NV:", 12, Colors.black)
+                        child: setRegularText("NV:", 12, Colors.black)
                         // Text(
                         //   "NV:",
                         //   style: TextStyle(
@@ -1225,7 +1226,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         ),
                     Padding(
                         padding: EdgeInsets.only(left: 5),
-                        child: setBoldText(str_NV, 12, Colors.red)
+                        child: setRegularText(removeDecimalAmount(str_NV), 12, Colors.red)
                         // Text(
                         //   str_NV,
                         //   style: TextStyle(
@@ -1241,7 +1242,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    setBoldText("SKU:", 14, Colors.black),
+                    setRegularText("SKU:", 14, Colors.black),
                     // Text(
                     //   "SKU:",
                     //   style: TextStyle(
@@ -1251,7 +1252,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     // ),
                     Padding(
                       padding: EdgeInsets.only(left: 5),
-                      child: setBoldText(str_SKU, 14, Colors.red),
+                      child: setRegularText(str_SKU, 14, Colors.black),
                       //   Text(
                       //   str_SKU,
                       //   style: TextStyle(
@@ -1332,9 +1333,9 @@ class _ProductDetailState extends State<ProductDetail> {
                       "Description",
                       maxLines: 5,
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
                         color: Colors.black45,
-                        fontSize: 18,
+                        fontSize: 14,
                       ),
                     ),
                     Visibility(
@@ -1526,7 +1527,7 @@ class _ProductDetailState extends State<ProductDetail> {
           padding: const EdgeInsets.all(6.0),
           child: Row(
             children: <Widget>[
-              Expanded(child: setBoldText("Similar Items", 18, Colors.black)
+              Expanded(child: setRegularText("Similar Items", 16, Colors.black)
                   // Text(
                   //   "Similar Items",
                   //   style: TextStyle(
@@ -1677,6 +1678,7 @@ class _ProductDetailState extends State<ProductDetail> {
   setProductData(itemProdctDetailData data) async {
     str_Mrp = data.mrp.toString();
     str_saleprice = data.salePrice.toString();
+    str_saleprice = removeDecimalAmount(str_saleprice);
     str_BV = data.bv.toString();
     str_PV = data.pv.toString();
     str_NV = data.nv.toString();

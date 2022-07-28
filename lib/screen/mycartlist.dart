@@ -249,7 +249,7 @@ handlePaymentFailure(String errorMessage){
                         Container(
                           padding: EdgeInsets.all(10),
                           width: MediaQuery.of(context).size.width,
-                          child: setBoldText("Order Detail", 16, Colors.grey),
+                          child: setBoldText("Order Details", 16, Colors.grey),
                           //  Text(
                           //   "Order Detail",
                           //   style: TextStyle(color: Colors.grey, fontSize: 16),
@@ -389,7 +389,7 @@ handlePaymentFailure(String errorMessage){
           Align(
               alignment: Alignment.topRight,
               child: setRegularText(
-                  rupees_Sybol + detail.toString(), 14, Colors.red)
+                  rupees_Sybol + detail.toString(), 16, Colors.red)
               // Text(
               //   rupees_Sybol + detail.toString(),
               //   style: TextStyle(
@@ -419,7 +419,7 @@ handlePaymentFailure(String errorMessage){
               ),
           Align(
               alignment: Alignment.topRight,
-              child: setBoldText(detail!, 14, Colors.blue)
+              child: setBoldText(detail!, 16, Colors.blue)
               // Text(
               //   detail!,
               //   style: const TextStyle(
@@ -618,7 +618,7 @@ handlePaymentFailure(String errorMessage){
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       decoration: grandientBackground(),
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 11,
+      height: MediaQuery.of(context).size.height / 13,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -626,7 +626,7 @@ handlePaymentFailure(String errorMessage){
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                setBoldText("Payable Amount:  ", 16, Colors.black),
+                setBoldText("Payable Amount :  ", 16, Colors.black),
                 // Text(
                 //   "Payable Amount:  ",
                 //   style: TextStyle(
@@ -634,7 +634,7 @@ handlePaymentFailure(String errorMessage){
                 //       fontWeight: FontWeight.bold,
                 //       fontSize: 16),
                 // ),
-                setBoldText(rupees_Sybol + str_GrandTotal, 16, Colors.black)
+                setRegularText(rupees_Sybol + str_GrandTotal, 14, Colors.black)
               ],
             ),
           ),

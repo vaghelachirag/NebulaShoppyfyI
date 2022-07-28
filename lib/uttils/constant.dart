@@ -236,6 +236,7 @@ Text setRegularText(String text, int size, Color black) {
   return Text(
     text,
     maxLines: 1,
+overflow: TextOverflow.ellipsis,
     style: TextStyle(
         fontFamily: Ember, fontSize: ScreenUtil().setSp(size), color: black),
     textAlign: TextAlign.start,
@@ -337,6 +338,17 @@ String getDeviceHeight(BuildContext context) {
   } else {
     return "Medium";
   }
+}
+
+String removeDecimalAmount(String amount){
+   if(amount.contains(".")){
+    var arr = amount.split('.');
+    amount = arr[0]; 
+    return amount;
+   }
+   else {
+    return amount;
+   }
 }
 
 Future<bool> willPopCallback() async {

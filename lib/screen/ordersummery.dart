@@ -294,8 +294,9 @@ class _OrderSummeryState extends State<OrderSummery>
         children: [
           Align(
               alignment: Alignment.topLeft,
-              child: setRegularText(
-                  title, 14, str_color == "Black" ? Colors.black : Colors.grey)
+              child: Text(title,style: TextStyle(fontWeight: str_color == "Black" ? FontWeight.bold : FontWeight.normal,color: str_color == "Black" ? Colors.black : Colors.grey),)
+              // setRegularText(
+              //     title, 14, str_color == "Black" ? Colors.black : Colors.grey)
               // Text(
               //   title,
               //   style: TextStyle(
@@ -314,7 +315,7 @@ class _OrderSummeryState extends State<OrderSummery>
               ),
               Align(
                 alignment: Alignment.topRight,
-                child: setBoldText(detail.toString(), 14, Colors.red),
+                child: setRegularText(detail.toString(), 14, Colors.red),
               )
             ],
           ),
