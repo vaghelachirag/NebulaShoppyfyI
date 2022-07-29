@@ -62,9 +62,7 @@ class _TabScreenState extends State<TabScreen> {
   void initState() {
     super.initState();
     checkUserLoginOrNot();
-
-    print("SelectedTab"+widget.int_Selectedtab.toString());
-
+    
     if (is_Login) {
       int_tablength = 2;
     } else {
