@@ -36,6 +36,9 @@ import 'package:http/http.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
+
+
 class Test extends StatefulWidget {
   @override
   State<Test> createState() => _TestState();
@@ -50,8 +53,11 @@ class _TestState extends State<Test> with RouteAware {
   @override
   void initState() {
     super.initState();
+   
   }
 
+
+  
   @override
   void didPush() {
     print('HomePage: Called didPush');
@@ -77,31 +83,28 @@ class _TestState extends State<Test> with RouteAware {
   }
  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Read More'),
-        centerTitle: true,
+   return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Payu Money Flutter'),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100,
+              ),
+              TextButton(
+                  onPressed: () {
+                   
+                  },
+                  child: Text("Tap me"))
+            ],
+          ),
+        ),
       ),
-      body:   Container(
-     height: 50,
-     width: 50,
-     decoration: const BoxDecoration(
-      color: Colors.black,     
-      shape: BoxShape.circle),
-      child: Padding(
-            //this padding will be you border size
-            padding: const EdgeInsets.all(3.0),
-            child: Container(
-                  decoration: const BoxDecoration(
-                  color: Colors.white, shape: BoxShape.circle),
-                        child: const CircleAvatar(
-                        backgroundColor: Colors.white,
-                        foregroundImage: NetworkImage("https://i.ibb.co/rkG8cCs/112921315-gettyimages-876284806.jpg"),
-                   ),
-            ),
-      ),
-),
     );
+
   }
 
   
@@ -118,6 +121,12 @@ class _TestState extends State<Test> with RouteAware {
       // so that user can understand there are few more line to read.
       overflow: isReadmore ? TextOverflow.visible: TextOverflow.ellipsis,
     );
+  }
+  
+ 
+  void startPayment() async {
+    
+
   }
 
 }

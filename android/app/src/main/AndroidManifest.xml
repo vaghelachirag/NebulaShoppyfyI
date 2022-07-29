@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.nebulsshoppy">
       <uses-permission android:name="android.permission.INTERNET"/>
        <uses-permission android:name="android.permission."/>
@@ -6,6 +7,7 @@
   <uses-permission android:name="android.intent.category.LAUNCHER"/>
   <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
    <application
+      tools:node="replace"
         android:label="nebulsshoppy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

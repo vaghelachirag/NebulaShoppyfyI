@@ -157,7 +157,7 @@ class AccountWiget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            setBoldText(product.Title, 16, Colors.black),
+            setRegularText(product.Title, 14, Colors.black),
             // Text(
             //   product.Title,
             //   maxLines: 1,

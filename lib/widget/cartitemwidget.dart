@@ -162,7 +162,7 @@ class CartItemWidget extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    setRegularText(product.name, 16, Colors.black),
+                    setRegularText(product.name, 14, Colors.black),
                     // setTextData(product.name, 16),
                     Padding(
                         padding: EdgeInsets.only(top: 5),
