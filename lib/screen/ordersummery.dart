@@ -15,7 +15,7 @@ import '../uttils/sharedpref.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../widget/paymentcancelledwidget.dart';
-
+import 'package:payumoney_pro_unofficial/payumoney_pro_unofficial.dart';
 
 class OrderSummery extends StatefulWidget {
   String str_Title = "";
@@ -294,9 +294,8 @@ class _OrderSummeryState extends State<OrderSummery>
         children: [
           Align(
               alignment: Alignment.topLeft,
-              child: Text(title,style: TextStyle(fontWeight: str_color == "Black" ? FontWeight.bold : FontWeight.normal,color: str_color == "Black" ? Colors.black : Colors.grey),)
-              // setRegularText(
-              //     title, 14, str_color == "Black" ? Colors.black : Colors.grey)
+              child: setRegularText(
+                  title, 14, str_color == "Black" ? Colors.black : Colors.grey)
               // Text(
               //   title,
               //   style: TextStyle(
@@ -315,7 +314,7 @@ class _OrderSummeryState extends State<OrderSummery>
               ),
               Align(
                 alignment: Alignment.topRight,
-                child: setRegularText(detail.toString(), 14, Colors.red),
+                child: setBoldText(detail.toString(), 14, Colors.red),
               )
             ],
           ),
@@ -473,13 +472,13 @@ class _OrderSummeryState extends State<OrderSummery>
                    // Navigator.pop(_dialogKey.currentContext!);
                    hideProgressBar();
                     if (value.statusCode == 1) {
-                      widget.txnID = value.data!.orderId.toString();
+                      widget.txnID = "Order_637946852342729071";
                       widget.firstname = value.data!.firstname.toString();
                       widget.productInfo = value.data!.productinfo.toString();
                       widget.email = value.data!.email.toString();
                       widget.phone = value.data!.phone.toString();
-                      print("TransectionId" + widget.txnID);
-                     // initializePayments();
+                     // print("TransectionId" + widget.txnID);
+                      initializePayments();
                     } else {
                       showSnakeBar(context, somethingWrong);
                       print("Categorylist" + "Opps Something Wrong!");
@@ -487,6 +486,46 @@ class _OrderSummeryState extends State<OrderSummery>
                   }))
                 }
             });
+  }
+
+  Future<void> initializePayments() async {
+    final response = await PayumoneyProUnofficial.payUParams(
+        email: widget.email,
+        firstName: widget.firstname,
+        merchantName: 'Nebula',
+        isProduction: true,
+        merchantKey: MerchantKey,
+        merchantSalt: MerchantSalt,
+        amount: int_Total.toString(),
+        hashUrl: '<Checksum URL to generate dynamic hashes>',
+        productInfo: widget.productInfo,
+        transactionId: "Order_637946852342729071",
+        showExitConfirmation: true,
+        showLogs: false, // true for debugging, false for production
+        userCredentials: MerchantKey + ":" + widget.email,
+        userPhoneNumber: widget.phone);
+
+    if (response['status'] == PayUParams.success) {
+      getMarkDeleteCart();
+     
+    }
+
+    if (response['status'] == PayUParams.failed) {
+      handlePaymentFailure(response['message']);
+    }
+  }
+
+  handlePaymentSuccess() {
+    showSucessDialoug("Payment Successful.", "");
+  }
+
+  handlePaymentFailure(String errorMessage) {
+    if (errorMessage == 'Payment canceled') {
+      showAlertDialoug("Payment Cancelled.",
+          "If the amount was debited, kindly wait for 8 hours until we verify and update your payment.");
+    } else {
+      showAlertDialoug("Payment Cancelled.", errorMessage);
+    }
   }
 
   void showAlertDialoug(String str_Title, String str_Message) {
@@ -561,7 +600,7 @@ class _OrderSummeryState extends State<OrderSummery>
                 }
               else
                 {
-               //   handlePaymentSuccess()
+                  handlePaymentSuccess()
                 }
             });
   }
