@@ -859,21 +859,28 @@ handlePaymentFailure(String errorMessage){
   }
 
   void openCheckoutDialoug() {
-    if (!is_Login) {
-      showDialog(
+      if(!is_Login){
+         showDialog(
         barrierColor: Colors.black26,
         context: context,
         builder: (context) {
           return LoginDialoug(
-            context,
             title: "SoldOut",
             description:
-                "This product may not be available at the selected address.",
+                "This product may not be available at the selected address.", onLoginSuccess: () { 
+                  print("onLogin"+"OnloginnSuccess");
+                   setState(() {
+                     is_Login = true;
+                      getMyCartList();
+                   });
+                 },
           );
         },
       );
-    } else {
-      Navigator.push(
+      }
+      else{
+          // showSnakeBar(context, "Login");
+           Navigator.push(
           context,
           PageTransition(
             type: PageTransitionType.fade,
@@ -890,7 +897,39 @@ handlePaymentFailure(String errorMessage){
               is_WalletFreez: getCartItemData?.isEwalletfreeze,
             ),
           ));
-    }
+      }
+    // if (!is_Login) {
+    //   showDialog(
+    //     barrierColor: Colors.black26,
+    //     context: context,
+    //     builder: (context) {
+    //       return LoginDialoug(
+    //         context,
+    //         title: "SoldOut",
+    //         description:
+    //             "This product may not be available at the selected address.",
+    //       );
+    //     },
+    //   );
+    // } else {
+    //   Navigator.push(
+    //       context,
+    //       PageTransition(
+    //         type: PageTransitionType.fade,
+    //         child: OrderSummery(
+    //           str_Title: "Order Summery",
+    //           int_SubTotal: getCartItemData?.subTotal,
+    //           int_GrandTotal: getCartItemData?.grandTotal,
+    //           int_ShippingCharge: getCartItemData?.shippingCharge,
+    //           int_GrandTotalWallet: getCartItemData?.grandTotalWithEwallet,
+    //           int_ShippingChargeWallet: getCartItemData?.shippingWithEwallet,
+    //           int_SubTotalWallet: getCartItemData?.subTotalWithEwallet,
+    //           int_E_WalletAmount: getCartItemData?.ewalletAmount,
+    //           is_EwalletOnOff: getCartItemData?.isEwalletOnOff,
+    //           is_WalletFreez: getCartItemData?.isEwalletfreeze,
+    //         ),
+    //       ));
+    // }
   }
 
   void getCartItemWithLogin() {

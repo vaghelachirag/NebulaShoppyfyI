@@ -92,10 +92,10 @@ class AccountWiget extends StatelessWidget {
           context: context,
           builder: (context) {
             return LoginDialoug(
-              context,
               title: "SoldOut",
               description:
                   "This product may not be available at the selected address.",
+                   onLoginSuccess: () {  },
             );
           },
         );

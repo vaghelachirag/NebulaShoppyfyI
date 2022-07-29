@@ -64,10 +64,14 @@ class _AccountState extends State<Account> with WidgetsBindingObserver {
           context: context,
           builder: (context) {
             return LoginDialoug(
-              context,
               title: "SoldOut",
               description:
-                  "This product may not be available at the selected address.",
+                  "This product may not be available at the selected address.", onLoginSuccess: () {  
+                    setState(() {
+                      is_Login = true;
+                       addAccountData();
+                    });
+                  },
             );
           },
         );
@@ -138,6 +142,7 @@ class _AccountState extends State<Account> with WidgetsBindingObserver {
   }
 
   void addAccountData() {
+    _accountList.clear();
     _accountList.add(SetMyAccount(
         postition: 0,
         Title: "My Address",
